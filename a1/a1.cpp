@@ -93,7 +93,6 @@ int main()
 
 	openFile(file1,1);
 	openFile(file2,2);	
-//hi fuckers
 
 	vector<string> names1;	
 	vector<string> names2;
