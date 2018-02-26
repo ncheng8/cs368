@@ -18,6 +18,8 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <algorithm>
+#include <set>
 
 using namespace std;
 
@@ -116,5 +118,6 @@ int main()
 
 
 	file1.close();
-	file2.close();	
+	file2.close();
+	return 0;
 }
