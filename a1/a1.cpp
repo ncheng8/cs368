@@ -23,6 +23,9 @@
 
 using namespace std;
 
+string class1;
+string class2;
+
 /**
  * @brief This function simply acquires a filename from the
  *	  user and appends ".txt" to it
@@ -37,12 +40,15 @@ string getFileName(int fn)
 	if (fn == 1) 
 	{
 		cout << "Enter the name of the first file: ";
+        getline(cin, filename);
+        class1 = filename;
 	} 
 	else if(fn == 2)
 	{
 		cout << "Enter the name of the second file: ";
+        getline(cin, filename);
+        class2 = filename;
 	}
-	getline(cin, filename);
 	filename.append(".txt");
 	
 	return filename;
@@ -96,26 +102,58 @@ int main()
 
 	vector<string> names1;	
 	vector<string> names2;
-	
+
 	getStudents(file1,names1);
 	getStudents(file2,names2);
 
+    cout << "Number of students in " << class1 << " = " << names1.size() << endl;
+    cout << "Number of students in " << class2 << " = " << names2.size() << endl;
+
 	vector<string>::iterator scoop;
 	vector<string>::iterator sloop;
-	string scooper;	
+	string scooper;
 
+    sort(names1.begin(),names1.end());
+    sort(names2.begin(),names2.end());
+/*
 	for (scoop = names1.begin(); scoop != names1.end(); scoop++)
 	{
 		cout << *scoop << endl;
 	}
-	cout << endl;
+	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 	for (sloop = names2.begin(); sloop != names2.end(); sloop++)
 	{
 		cout << *sloop << endl;
 	}	
-	
+*/
+
+    set<string> intersect;
+    set<string> unified;
+    set<string>::iterator stroop;
+
+    set_intersection(names1.begin(),names1.end(),names2.begin(),names2.end(),
+                     inserter(intersect,intersect.begin()));
+
+    set_union(names1.begin(),names1.end(),names2.begin(),names2.end(),
+                     inserter(unified,unified.begin()));
+
+    cout << "Number of students that are present in BOTH " <<
+         class1 << " AND " << class2 << " = " << intersect.size() << endl;
+    cout << "Number of students that are present in EITHER " <<
+         class1 << " OR " << class2 << " = " << unified.size() << endl;
+
+    for (stroop = intersect.begin(); stroop != intersect.end(); stroop++)
+    {
+        cout << *stroop << endl;
+    }
 
 
+/*
+    for (stroop = unified.begin(); stroop != unified.end(); stroop++)
+    {
+        cout << *stroop << endl;
+    }
+*/
 	file1.close();
 	file2.close();
 	return 0;
