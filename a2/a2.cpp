@@ -33,7 +33,7 @@ using namespace std;
 
 void cleanData(std::ifstream &inFile, std::ofstream &outFile,
                std::unordered_set<std::string> &stopwords) {
-    // TODO: Implement this method.
+    // Implement this method.
     // # of lines of code in Gerald's implementation: 13
     // Do the following operations on each review before
     // storing it to the output file:
@@ -50,12 +50,10 @@ void cleanData(std::ifstream &inFile, std::ofstream &outFile,
     string scooper;
     while(getline(inFile, scooper)) {
         replaceHyphensWithSpaces(scooper);
-        vector<string> vLine;
+        vector<string> vLine, v2Line;
         splitLine(scooper, vLine);
-        vector<string> v2Line;
         v2Line.push_back("");
         removePunctuation(vLine, v2Line);
-        //v2Line.erase(v2Line.begin());
         removeWhiteSpaces(v2Line);
         removeEmptyWords(v2Line);
         removeSingleLetterWords(v2Line);
@@ -63,10 +61,8 @@ void cleanData(std::ifstream &inFile, std::ofstream &outFile,
         vector<string>::iterator p;
         for (p = v2Line.begin(); p != v2Line.end(); p++) {
             outFile << *p << " ";
-            cout << *p << " ";
         }
         outFile << endl;
-        cout << endl;
     }
 
 }
@@ -75,12 +71,31 @@ void fillDictionary(std::ifstream &newInFile,
                     std::unordered_map<std::string, std::pair<long, long>> &dict) {
     // TODO: Implement this method.
     // approximate # of lines of code in Gerald's implementation: < 20
+    string scooper;
+    while(getline(newInFile, scooper)) {
+        vector<string> cLine;
+        splitLine(scooper, cLine);
+        int rating = stoi(cLine[0]);
+        for(vector<string>::iterator it = cLine.begin() + 1; it != cLine.end(); it++) {
+            unordered_map<string, pair<long, long>>::iterator elem = dict.find(*it);
+            if (elem == dict.end()) {
+                dict.emplace(*it, make_pair<long, long>(rating,1));
+            } else {
+                (elem->second).first = (elem->second).first + rating;
+                (elem->second).second++;
+            }
+        }
+    }
+    for(unordered_map<string, pair<long, long>>::iterator it = dict.begin();
+        it != dict.end(); ++it) {
+        std::cout << it->first << " " << it->second.first << " " << it->second.second << "\n";
+    }
 }
 
 
 void fillStopWords(std::ifstream &inFile,
                    std::unordered_set<std::string> &stopwords) {
-    // TODO: Implement this method.
+    // Implement this method.
     // approximate # of lines of code in Gerald's implementation: < 5
     string currsw;
     while(getline(inFile, currsw)) {
@@ -96,7 +111,7 @@ void rateReviews(std::ifstream &testFile,
 }
 
 void removeEmptyWords(std::vector<std::string> &tokens) {
-    // TODO: Implement this method.
+    // Implement this method.
     // approximate # of lines of code in Gerald's implementation: < 5
     vector<string>::iterator it = tokens.begin();
     while (it != tokens.end()) {
@@ -110,7 +125,7 @@ void removeEmptyWords(std::vector<std::string> &tokens) {
 
 void removePunctuation(std::vector<std::string> &inTokens,
                        std::vector<std::string> &outTokens) {
-    // TODO: Implement this method.
+    // Implement this method.
     // approximate # of lines of code in Gerald's implementation: < 10
     vector<string>::iterator it;
     string result;
@@ -125,7 +140,7 @@ void removePunctuation(std::vector<std::string> &inTokens,
 }
 
 void removeSingleLetterWords(std::vector<std::string> &tokens) {
-    // TODO: Implement this method.
+    // Implement this method.
     // approximate # of lines of code in Gerald's implementation: < 5
     vector<string>::iterator it = tokens.begin();
     while (it != tokens.end()) {
@@ -140,7 +155,7 @@ void removeSingleLetterWords(std::vector<std::string> &tokens) {
 
 void removeStopWords(std::vector<std::string> &tokens,
                      std::unordered_set<std::string> &stopwords) {
-    // TODO: Implement this method.
+    // Implement this method.
     // approximate # of lines of code in Gerald's implementation: < 5
     vector<string>::iterator it = tokens.begin();
     while (it != tokens.end()) {
@@ -153,7 +168,7 @@ void removeStopWords(std::vector<std::string> &tokens,
 }
 
 void removeWhiteSpaces(std::vector<std::string> &tokens) {
-    // TODO: Implement this method.
+    // Implement this method.
     // approximate # of lines of code in Gerald's implementation: < 5
     // You may want to use the trim() method from the trim.*pp files in a2.
     vector<string>::iterator it;
@@ -163,7 +178,7 @@ void removeWhiteSpaces(std::vector<std::string> &tokens) {
 }
 
 void replaceHyphensWithSpaces(std::string &line) {
-    // TODO: Implement this method.
+    // Implement this method.
     // approximate # of lines of code in Gerald's implementation: < 5
     for (int i = 0; i < line.size(); i++) {
         if (line[i] == '-') {
@@ -173,7 +188,7 @@ void replaceHyphensWithSpaces(std::string &line) {
 }
 
 void splitLine(std::string &line, std::vector<std::string> &words) {
-    // TODO: Implement this method.
+    // Implement this method.
     // approximate # of lines of code in Gerald's implementation: < 10
     stringstream ssLine(line);
     string w;
