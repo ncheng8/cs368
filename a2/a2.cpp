@@ -33,22 +33,8 @@ using namespace std;
 
 void cleanData(std::ifstream &inFile, std::ofstream &outFile,
                std::unordered_set<std::string> &stopwords) {
-    // Implement this method.
-    // # of lines of code in Gerald's implementation: 13
-    // Do the following operations on each review before
-    // storing it to the output file:
-    //   1. Replace hyphens with spaces.x
-    //   2. Split the line of text into individual words.x
-    //   3. Remove the punctuation marks from the words.x
-    //   4. Remove the trailing and the leading whitespaces in each word.x
-    //   5. Remove the empty words.x
-    //   6. Remove words with just one character in them. You should NOT remove
-    //      numbers in this step because if you do so, you'll lose the ratings.
-    //   7. Remove stopwords.
-
-    //vector<string> reviews;
     string scooper;
-    while(getline(inFile, scooper)) {
+    while (getline(inFile, scooper)) {
         replaceHyphensWithSpaces(scooper);
         vector<string> vLine, v2Line;
         splitLine(scooper, vLine);
@@ -68,35 +54,31 @@ void cleanData(std::ifstream &inFile, std::ofstream &outFile,
 
 void fillDictionary(std::ifstream &newInFile,
                     std::unordered_map<std::string, std::pair<long, long>> &dict) {
-    // Implement this method.
-    // approximate # of lines of code in Gerald's implementation: < 20
     string scooper;
-    while(getline(newInFile, scooper)) {
+    while (getline(newInFile, scooper)) {
+        //split each line to handle each string individually
         vector<string> cLine;
         splitLine(scooper, cLine);
+        //rating is the first element in each cleaned line
         int rating = stoi(cLine[0]);
-        for(auto it = cLine.begin() + 1; it != cLine.end(); it++) {
+        for (auto it = cLine.begin() + 1; it != cLine.end(); it++) {
             auto elem = dict.find(*it);
+            //add new string if not found in map, else update existing string with new values
             if (elem == dict.end()) {
-                dict.emplace(*it, make_pair<long, long>(rating,1));
+                dict.emplace(*it, make_pair<long, long>(rating, 1));
             } else {
                 (elem->second).first = (elem->second).first + rating;
                 (elem->second).second++;
             }
         }
     }
-    for (auto &it : dict) {
-        std::cout << it.first << " " << it.second.first << " " << it.second.second << "\n";
-    }
 }
-
 
 void fillStopWords(std::ifstream &inFile,
                    std::unordered_set<std::string> &stopwords) {
-    // Implement this method.
-    // approximate # of lines of code in Gerald's implementation: < 5
     string currsw;
-    while(getline(inFile, currsw)) {
+    //get each string and put them into the stopwords set
+    while (getline(inFile, currsw)) {
         stopwords.insert(currsw);
     }
 }
@@ -104,30 +86,35 @@ void fillStopWords(std::ifstream &inFile,
 void rateReviews(std::ifstream &testFile,
                  std::unordered_map<std::string, std::pair<long, long>> &dict,
                  std::ofstream &ratingsFile) {
-    // TODO: Implement this method.
-    // approximate # of lines of code in Gerald's implementation: < 20
+    //set the decimal precision
     ratingsFile << setprecision(2) << fixed;
     string scooper;
-    while(getline(testFile, scooper)) {
+
+    while (getline(testFile, scooper)) {
+        //empty review gets a rating of two
         if (scooper.empty()) {
             ratingsFile << 2 << endl;
             continue;
         }
+        //split each line into individual strings
         vector<string> cLine;
         splitLine(scooper, cLine);
         vector<double> ratings;
-        for(string s : cLine) {
+        for (string s : cLine) {
             auto it = dict.find(s);
+            //if the string does not exist in the dictionary, give it a tentative rating of two
+            //if the string exists in the dictionary, calculate its average rating across all reviews
             if (it == dict.end()) {
-               ratings.emplace_back(2.00);
+                ratings.emplace_back(2.00);
             } else {
                 double r = (it->second).first;
                 double c = (it->second).second;
-                ratings.emplace_back(r/c);
+                ratings.emplace_back(r / c);
             }
         }
+        //obtain average rating over all strings in the line
         double avgRating = 0.00;
-        for(auto &n : ratings) {
+        for (auto &n : ratings) {
             avgRating += n;
         }
         avgRating = avgRating / ratings.size();
@@ -136,8 +123,8 @@ void rateReviews(std::ifstream &testFile,
 }
 
 void removeEmptyWords(std::vector<std::string> &tokens) {
-    // Implement this method.
-    // approximate # of lines of code in Gerald's implementation: < 5
+    //only increment iterator if no erasure takes place
+    //otherwise, erase sets iterator to the next element in the vector
     auto it = tokens.begin();
     while (it != tokens.end()) {
         if ((*it).length() == 0) {
@@ -150,10 +137,9 @@ void removeEmptyWords(std::vector<std::string> &tokens) {
 
 void removePunctuation(std::vector<std::string> &inTokens,
                        std::vector<std::string> &outTokens) {
-    // Implement this method.
-    // approximate # of lines of code in Gerald's implementation: < 10
     vector<string>::iterator it;
     string result;
+    //copy the string to result; if any punctuation exists, remove it before pushing result into outTokens
     for (it = inTokens.begin(); it != inTokens.end(); it++) {
         result = "";
         remove_copy_if((*it).begin(), (*it).end(),
@@ -165,8 +151,7 @@ void removePunctuation(std::vector<std::string> &inTokens,
 }
 
 void removeSingleLetterWords(std::vector<std::string> &tokens) {
-    // Implement this method.
-    // approximate # of lines of code in Gerald's implementation: < 5
+    //check first character of the string; if the string is of length one and is not a digit, remove
     auto it = tokens.begin();
     while (it != tokens.end()) {
         char t = (*it)[0];
@@ -180,8 +165,7 @@ void removeSingleLetterWords(std::vector<std::string> &tokens) {
 
 void removeStopWords(std::vector<std::string> &tokens,
                      std::unordered_set<std::string> &stopwords) {
-    // Implement this method.
-    // approximate # of lines of code in Gerald's implementation: < 5
+    //search stopwords set for the current word; if it exists, erase it from tokens
     auto it = tokens.begin();
     while (it != tokens.end()) {
         if (stopwords.find(*it) != stopwords.end()) {
@@ -193,9 +177,7 @@ void removeStopWords(std::vector<std::string> &tokens,
 }
 
 void removeWhiteSpaces(std::vector<std::string> &tokens) {
-    // Implement this method.
-    // approximate # of lines of code in Gerald's implementation: < 5
-    // You may want to use the trim() method from the trim.*pp files in a2.
+    //call trim() on every string
     vector<string>::iterator it;
     for (it = tokens.begin(); it != tokens.end(); it++) {
         *it = trim(*it);
@@ -203,8 +185,7 @@ void removeWhiteSpaces(std::vector<std::string> &tokens) {
 }
 
 void replaceHyphensWithSpaces(std::string &line) {
-    // Implement this method.
-    // approximate # of lines of code in Gerald's implementation: < 5
+    //check every character in each line for hyphens and replace them with spaces
     for (char &i : line) {
         if (i == '-') {
             i = ' ';
@@ -213,8 +194,7 @@ void replaceHyphensWithSpaces(std::string &line) {
 }
 
 void splitLine(std::string &line, std::vector<std::string> &words) {
-    // Implement this method.
-    // approximate # of lines of code in Gerald's implementation: < 10
+    //use a string stream to push each individual word delineated by whitespaces into a vector
     stringstream ssLine(line);
     string w;
     while (ssLine >> w) {
