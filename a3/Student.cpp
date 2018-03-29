@@ -4,7 +4,8 @@
 
 #include <iostream>
 #include "Student.hpp"
-    static int Student::numStudents = 0;
+
+int Student::numStudents = 0;
 
 /*
     int Student::id;
@@ -13,71 +14,74 @@
     std::vector<double> Student::assignmentsScore;
     double Student::projectScore;
 */
-    /*
-    Student::Student() {
-        name = "noname";
-        yearOfBirth = 0;
-        ++Student::numStudents;
-    }
-     */
+/*
+Student::Student() {
+    name = "noname";
+    yearOfBirth = 0;
+    ++Student::numStudents;
+}
+ */
 
-    Student::Student(std::string name,
-            int yearOfBirth,
-            const std::vector<double> &assignmentsScore,
-            double projectScore) {
-        this->name = name;
-        this->yearOfBirth = yearOfBirth;
-        this->assignmentsScore = assignmentsScore;
-        this->projectScore = projectScore;
-        ++numStudents;
-        this->id = numStudents;
-    }
+Student::Student(std::string name,
+                 int yearOfBirth,
+                 const std::vector<double> &assignmentsScore,
+                 double projectScore) {
+    this->name = name;
+    this->yearOfBirth = yearOfBirth;
+    this->assignmentsScore = assignmentsScore;
+    this->projectScore = projectScore;
+    ++numStudents;
+    this->id = numStudents;
+}
 
-    int Student::getId() {
-        return id;
-    }
-    std::string Student::getName() {
-        return name;
-    }
+int Student::getId() {
+    return id;
+}
 
-    int Student::getYearOfBirth() {
-        return yearOfBirth;
-    }
+std::string Student::getName() {
+    return name;
+}
 
-    int Student::getAge() {
-        return current_year - yearOfBirth;
-    }
+int Student::getYearOfBirth() {
+    return yearOfBirth;
+}
 
-    const std::vector<double> &Student::getAssignmentsScore() {
-        return assignmentsScore;
-    }
+int Student::getAge() {
+    return current_year - yearOfBirth;
+}
 
-    double Student::getProjectScore() {
-        return projectScore;
-    }
+const std::vector<double> &Student::getAssignmentsScore() {
+    return assignmentsScore;
+}
 
-    static int Student::getNumStudents() {
-        return numStudents;
-    }
- /*   void Student::setYearOfBirth(int year) {
-        yob = year;
-    }
+double Student::getProjectScore() {
+    return projectScore;
+}
 
-    void Student::setName(std::string name) {
-        // this->name = name;
-        Student::name = name;
-    }
+int Student::getNumStudents() {
+    return numStudents;
+}
+
+/*   void Student::setYearOfBirth(int year) {
+       yob = year;
+   }
+
+   void Student::setName(std::string name) {
+       // this->name = name;
+       Student::name = name;
+   }
 */
-    void Student::printDetails() { std::cout << "Id = " << getId() << std::endl;
-        std::cout << "Name = " << getName() << std::endl;
-        std::cout << "Age = " << getAge() << std::endl;
-        std::cout << "Assignments = [";
-        for (auto it = assignmentsScore.begin(); it != assignmentsScore.end(); it++) {
-            std::cout << *it << ",";
-        }
-        std::cout << "]\n";
-        std::cout << "Project = " << projectScore << std::endl;
+void Student::printDetails() {
+    std::cout << "Id = " << getId() << std::endl;
+    std::cout << "Name = " << getName() << std::endl;
+    std::cout << "Age = " << getAge() << std::endl;
+    std::cout << "Assignments = [";
+    for (auto it = assignmentsScore.begin(); it != assignmentsScore.end(); it++) {
+        std::cout << *it << ",";
     }
+    std::cout << "]\n";
+    std::cout << "Project = " << projectScore << std::endl;
+}
 /*    virtual void Student::printDetails();
 
     virtual double Student::getTotal();

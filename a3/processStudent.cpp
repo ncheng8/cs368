@@ -23,19 +23,19 @@ void fillStudents(std::ifstream &inFile,
                   std::vector<UndergradStudent> &ugstudents) {
 
     // TODO: Implement this method.
-
+    return;
 }
 
 void printStudents(const std::vector<std::reference_wrapper<Student>> &students) {
 
     // TODO: Implement this method.
-
+    return;
 }
 
 void computeStatistics(std::vector<std::reference_wrapper<Student>> &students) {
 
     // TODO: Implement this method.
-
+    return;
     // compute the # of students based on the type of students.
 
     // compute the mean of the total score.
