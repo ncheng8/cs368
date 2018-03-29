@@ -1,0 +1,3 @@
+C:/Git/cs368/a3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Git/cs368/a3/cmake-build-debug/CMakeFiles/a3.dir
+C:/Git/cs368/a3/cmake-build-debug/CMakeFiles/edit_cache.dir
