@@ -23,12 +23,58 @@ void fillStudents(std::ifstream &inFile,
                   std::vector<UndergradStudent> &ugstudents) {
 
     // TODO: Implement this method.
+    std::string s;
+    //read each line of the file for a new student
+    while (std::getline(inFile, s)) {
+        //make new istringstream, then call getline with ',' delimiter to populate a vector for easy reading
+        std::istringstream iss(s);
+        std::vector<std::string> line;
+        std::string b;
+        //populate the vector with individual fields
+        for (int i = 0; i < 12; i++) {
+            std::getline(iss, b, dlm);
+            line.push_back(b);
+        }
+        //get the last data value, its delimiter is '\n' instead
+        std::getline(iss, b);
+        line.push_back(b);
+        //identify each data value based on position
+        std::string type = line[0];
+        std::string name = line[1];
+        //I guess atoi and atof only take c-strings? whatever those are? read up dude
+        int yearOfBirth = atoi(line[2].c_str());
+        std::vector<double> assignmentScores;
+        //read in all the assignment scores and put them in a double vector
+        //also, again with the fuckin c-strings, jesus
+        for (int j = 3; j < 10; j++) {
+            double score = atof(line[j].c_str());
+            assignmentScores.push_back(score);
+        }
+        //I swear to god one more c-string and I'll snap... like a string...
+        double projectScore = atof(line[10].c_str());
+        //read in the last two fields; careful, these are different depending on the type of student
+        std::string T1 = line[11];
+        std::string T2 = line[12];
+        //build a student depending on type; use the last 2 fields per type of student
+        if (type == "G") {
+            GradStudent newStudent(name, yearOfBirth, assignmentScores, projectScore, T1, T2);
+            gstudents.push_back(newStudent);
+        } else if (type == "U") {
+            UndergradStudent newStudent(name, yearOfBirth, assignmentScores, projectScore, T1,
+                                        T2);
+            ugstudents.push_back(newStudent);
+        }
+    }
     return;
 }
 
 void printStudents(const std::vector<std::reference_wrapper<Student>> &students) {
 
     // TODO: Implement this method.
+    for (auto it = students.begin(); it != students.end(); ++it) {
+        it->get().printDetails();
+        std::cout << std::endl;
+    }
     return;
 }
 

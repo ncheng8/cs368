@@ -77,7 +77,11 @@ void Student::printDetails() {
     std::cout << "Age = " << getAge() << std::endl;
     std::cout << "Assignments = [";
     for (auto it = assignmentsScore.begin(); it != assignmentsScore.end(); it++) {
-        std::cout << *it << ",";
+        if (it == assignmentsScore.begin()) {
+            std::cout << *it;
+        } else {
+            std::cout << "," << *it;
+        }
     }
     std::cout << "]\n";
     std::cout << "Project = " << projectScore << std::endl;

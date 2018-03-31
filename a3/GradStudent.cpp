@@ -40,7 +40,7 @@ int GradStudent::getNumStudents() {
 }
 
 double GradStudent::getTotal() {
-    return 0.0;
+    //return 0.0;
     double pavg = 0;
     std::vector<double> assignments = this->getAssignmentsScore();
     for (auto it = this->getAssignmentsScore().begin(); it != this->getAssignmentsScore().end(); it++) {
