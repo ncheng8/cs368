@@ -81,11 +81,33 @@ void printStudents(const std::vector<std::reference_wrapper<Student>> &students)
 void computeStatistics(std::vector<std::reference_wrapper<Student>> &students) {
 
     // TODO: Implement this method.
-    return;
     // compute the # of students based on the type of students.
-
+    double numStudents;
+    if (typeid(students[0].get()) == typeid(UndergradStudent)) {
+        std::cout << "Number of undergrads: " << UndergradStudent::getNumStudents() << std::endl;
+        numStudents = UndergradStudent::getNumStudents();
+    } else {
+        std::cout << "Number of grads: " << GradStudent::getNumStudents() << std::endl;
+        numStudents = GradStudent::getNumStudents();
+    }
+    double mean = 0;
+    for (auto it = students.begin(); it != students.end(); ++it) {
+        mean += it->get().getTotal();
+    }
+    mean = mean / numStudents;
+    std::cout << "Avg total score: " << mean << std::endl;
+    std::sort(students.begin(), students.end(),
+              [](const std::reference_wrapper<Student> &lhs, const std::reference_wrapper<Student> &rhs) {
+                  return lhs.get().getTotal() > rhs.get().getTotal();
+              });
+    for (auto it = students.begin(); it != students.end(); ++it) {
+        std::cout << "Score: " << it->get().getTotal() << std::endl;
+    }
+    //std::cout << UndergradStudent::getNumStudents() << std::endl;
     // compute the mean of the total score.
 
     // sort and print the students based on their total.
+
+    return;
 }
 
