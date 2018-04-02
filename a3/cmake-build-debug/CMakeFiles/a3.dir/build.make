@@ -33,19 +33,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2017.3.4\bin\cmake\bin\cmake.exe"
+CMAKE_COMMAND = "D:\Apps\Other Programs\CLion 2017.3.3\bin\cmake\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2017.3.4\bin\cmake\bin\cmake.exe" -E remove -f
+RM = "D:\Apps\Other Programs\CLion 2017.3.3\bin\cmake\bin\cmake.exe" -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Git\cs368\a3
+CMAKE_SOURCE_DIR = D:\Git\c++\a3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Git\cs368\a3\cmake-build-debug
+CMAKE_BINARY_DIR = D:\Git\c++\a3\cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/a3.dir/depend.make
@@ -58,16 +58,16 @@ include CMakeFiles/a3.dir/flags.make
 
 CMakeFiles/a3.dir/main.cpp.obj: CMakeFiles/a3.dir/flags.make
 CMakeFiles/a3.dir/main.cpp.obj: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Git\cs368\a3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/a3.dir/main.cpp.obj"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\a3.dir\main.cpp.obj -c C:\Git\cs368\a3\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Git\c++\a3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/a3.dir/main.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\a3.dir\main.cpp.obj -c D:\Git\c++\a3\main.cpp
 
 CMakeFiles/a3.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/a3.dir/main.cpp.i"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Git\cs368\a3\main.cpp > CMakeFiles\a3.dir\main.cpp.i
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Git\c++\a3\main.cpp > CMakeFiles\a3.dir\main.cpp.i
 
 CMakeFiles/a3.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/a3.dir/main.cpp.s"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Git\cs368\a3\main.cpp -o CMakeFiles\a3.dir\main.cpp.s
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Git\c++\a3\main.cpp -o CMakeFiles\a3.dir\main.cpp.s
 
 CMakeFiles/a3.dir/main.cpp.obj.requires:
 
@@ -82,16 +82,16 @@ CMakeFiles/a3.dir/main.cpp.obj.provides.build: CMakeFiles/a3.dir/main.cpp.obj
 
 CMakeFiles/a3.dir/processStudent.cpp.obj: CMakeFiles/a3.dir/flags.make
 CMakeFiles/a3.dir/processStudent.cpp.obj: ../processStudent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Git\cs368\a3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/a3.dir/processStudent.cpp.obj"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\a3.dir\processStudent.cpp.obj -c C:\Git\cs368\a3\processStudent.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Git\c++\a3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/a3.dir/processStudent.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\a3.dir\processStudent.cpp.obj -c D:\Git\c++\a3\processStudent.cpp
 
 CMakeFiles/a3.dir/processStudent.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/a3.dir/processStudent.cpp.i"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Git\cs368\a3\processStudent.cpp > CMakeFiles\a3.dir\processStudent.cpp.i
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Git\c++\a3\processStudent.cpp > CMakeFiles\a3.dir\processStudent.cpp.i
 
 CMakeFiles/a3.dir/processStudent.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/a3.dir/processStudent.cpp.s"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Git\cs368\a3\processStudent.cpp -o CMakeFiles\a3.dir\processStudent.cpp.s
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Git\c++\a3\processStudent.cpp -o CMakeFiles\a3.dir\processStudent.cpp.s
 
 CMakeFiles/a3.dir/processStudent.cpp.obj.requires:
 
@@ -106,16 +106,16 @@ CMakeFiles/a3.dir/processStudent.cpp.obj.provides.build: CMakeFiles/a3.dir/proce
 
 CMakeFiles/a3.dir/GradStudent.cpp.obj: CMakeFiles/a3.dir/flags.make
 CMakeFiles/a3.dir/GradStudent.cpp.obj: ../GradStudent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Git\cs368\a3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/a3.dir/GradStudent.cpp.obj"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\a3.dir\GradStudent.cpp.obj -c C:\Git\cs368\a3\GradStudent.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Git\c++\a3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/a3.dir/GradStudent.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\a3.dir\GradStudent.cpp.obj -c D:\Git\c++\a3\GradStudent.cpp
 
 CMakeFiles/a3.dir/GradStudent.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/a3.dir/GradStudent.cpp.i"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Git\cs368\a3\GradStudent.cpp > CMakeFiles\a3.dir\GradStudent.cpp.i
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Git\c++\a3\GradStudent.cpp > CMakeFiles\a3.dir\GradStudent.cpp.i
 
 CMakeFiles/a3.dir/GradStudent.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/a3.dir/GradStudent.cpp.s"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Git\cs368\a3\GradStudent.cpp -o CMakeFiles\a3.dir\GradStudent.cpp.s
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Git\c++\a3\GradStudent.cpp -o CMakeFiles\a3.dir\GradStudent.cpp.s
 
 CMakeFiles/a3.dir/GradStudent.cpp.obj.requires:
 
@@ -130,16 +130,16 @@ CMakeFiles/a3.dir/GradStudent.cpp.obj.provides.build: CMakeFiles/a3.dir/GradStud
 
 CMakeFiles/a3.dir/UndergradStudent.cpp.obj: CMakeFiles/a3.dir/flags.make
 CMakeFiles/a3.dir/UndergradStudent.cpp.obj: ../UndergradStudent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Git\cs368\a3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/a3.dir/UndergradStudent.cpp.obj"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\a3.dir\UndergradStudent.cpp.obj -c C:\Git\cs368\a3\UndergradStudent.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Git\c++\a3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/a3.dir/UndergradStudent.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\a3.dir\UndergradStudent.cpp.obj -c D:\Git\c++\a3\UndergradStudent.cpp
 
 CMakeFiles/a3.dir/UndergradStudent.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/a3.dir/UndergradStudent.cpp.i"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Git\cs368\a3\UndergradStudent.cpp > CMakeFiles\a3.dir\UndergradStudent.cpp.i
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Git\c++\a3\UndergradStudent.cpp > CMakeFiles\a3.dir\UndergradStudent.cpp.i
 
 CMakeFiles/a3.dir/UndergradStudent.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/a3.dir/UndergradStudent.cpp.s"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Git\cs368\a3\UndergradStudent.cpp -o CMakeFiles\a3.dir\UndergradStudent.cpp.s
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Git\c++\a3\UndergradStudent.cpp -o CMakeFiles\a3.dir\UndergradStudent.cpp.s
 
 CMakeFiles/a3.dir/UndergradStudent.cpp.obj.requires:
 
@@ -154,16 +154,16 @@ CMakeFiles/a3.dir/UndergradStudent.cpp.obj.provides.build: CMakeFiles/a3.dir/Und
 
 CMakeFiles/a3.dir/Student.cpp.obj: CMakeFiles/a3.dir/flags.make
 CMakeFiles/a3.dir/Student.cpp.obj: ../Student.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Git\cs368\a3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/a3.dir/Student.cpp.obj"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\a3.dir\Student.cpp.obj -c C:\Git\cs368\a3\Student.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Git\c++\a3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/a3.dir/Student.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\a3.dir\Student.cpp.obj -c D:\Git\c++\a3\Student.cpp
 
 CMakeFiles/a3.dir/Student.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/a3.dir/Student.cpp.i"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Git\cs368\a3\Student.cpp > CMakeFiles\a3.dir\Student.cpp.i
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Git\c++\a3\Student.cpp > CMakeFiles\a3.dir\Student.cpp.i
 
 CMakeFiles/a3.dir/Student.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/a3.dir/Student.cpp.s"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Git\cs368\a3\Student.cpp -o CMakeFiles\a3.dir\Student.cpp.s
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Git\c++\a3\Student.cpp -o CMakeFiles\a3.dir\Student.cpp.s
 
 CMakeFiles/a3.dir/Student.cpp.obj.requires:
 
@@ -196,7 +196,7 @@ a3.exe: CMakeFiles/a3.dir/build.make
 a3.exe: CMakeFiles/a3.dir/linklibs.rsp
 a3.exe: CMakeFiles/a3.dir/objects1.rsp
 a3.exe: CMakeFiles/a3.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Git\cs368\a3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable a3.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\Git\c++\a3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable a3.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\a3.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -217,6 +217,6 @@ CMakeFiles/a3.dir/clean:
 .PHONY : CMakeFiles/a3.dir/clean
 
 CMakeFiles/a3.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Git\cs368\a3 C:\Git\cs368\a3 C:\Git\cs368\a3\cmake-build-debug C:\Git\cs368\a3\cmake-build-debug C:\Git\cs368\a3\cmake-build-debug\CMakeFiles\a3.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\Git\c++\a3 D:\Git\c++\a3 D:\Git\c++\a3\cmake-build-debug D:\Git\c++\a3\cmake-build-debug D:\Git\c++\a3\cmake-build-debug\CMakeFiles\a3.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/a3.dir/depend
 

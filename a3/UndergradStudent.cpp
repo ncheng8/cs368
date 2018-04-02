@@ -26,10 +26,11 @@ UndergradStudent::UndergradStudent(std::string name,
 // also notice that the first line calls printStudent in the base class
 void UndergradStudent::printDetails() {
     Student::printDetails();
+    std::cout << "Total = " << this->getTotal() << std::endl;
     std::cout << "Grade = " << this->getGrade() << std::endl;
     std::cout << "Type = Undergraduate Student" << std::endl;
     std::cout << "Residence Hall = " << residenceHall << std::endl;
-    std::cout << "Year In College = " << yearInCollege << std::endl;
+    std::cout << "Year in College = " << yearInCollege << std::endl;
 }
 
 std::string UndergradStudent::getResidenceHall() {

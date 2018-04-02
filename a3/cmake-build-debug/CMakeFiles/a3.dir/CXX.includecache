@@ -6,43 +6,43 @@
 
 #IncludeRegexTransform: 
 
-C:/Git/cs368/a3/GradStudent.cpp
+D:/Git/c++/a3/GradStudent.cpp
 iostream
 -
 GradStudent.hpp
-C:/Git/cs368/a3/GradStudent.hpp
+D:/Git/c++/a3/GradStudent.hpp
 
-C:/Git/cs368/a3/GradStudent.hpp
+D:/Git/c++/a3/GradStudent.hpp
 Student.hpp
-C:/Git/cs368/a3/Student.hpp
+D:/Git/c++/a3/Student.hpp
 
-C:/Git/cs368/a3/Student.cpp
+D:/Git/c++/a3/Student.cpp
 iostream
 -
 Student.hpp
-C:/Git/cs368/a3/Student.hpp
+D:/Git/c++/a3/Student.hpp
 
-C:/Git/cs368/a3/Student.hpp
+D:/Git/c++/a3/Student.hpp
 string
 -
 vector
 -
 
-C:/Git/cs368/a3/UndergradStudent.cpp
+D:/Git/c++/a3/UndergradStudent.cpp
 iostream
 -
 UndergradStudent.hpp
-C:/Git/cs368/a3/UndergradStudent.hpp
+D:/Git/c++/a3/UndergradStudent.hpp
 
-C:/Git/cs368/a3/UndergradStudent.hpp
+D:/Git/c++/a3/UndergradStudent.hpp
 Student.hpp
-C:/Git/cs368/a3/Student.hpp
+D:/Git/c++/a3/Student.hpp
 string
 -
 vector
 -
 
-C:/Git/cs368/a3/main.cpp
+D:/Git/c++/a3/main.cpp
 iostream
 -
 fstream
@@ -52,15 +52,15 @@ functional
 vector
 -
 GradStudent.hpp
-C:/Git/cs368/a3/GradStudent.hpp
+D:/Git/c++/a3/GradStudent.hpp
 processStudent.hpp
-C:/Git/cs368/a3/processStudent.hpp
+D:/Git/c++/a3/processStudent.hpp
 UndergradStudent.hpp
-C:/Git/cs368/a3/UndergradStudent.hpp
+D:/Git/c++/a3/UndergradStudent.hpp
 
-C:/Git/cs368/a3/processStudent.cpp
+D:/Git/c++/a3/processStudent.cpp
 processStudent.hpp
-C:/Git/cs368/a3/processStudent.hpp
+D:/Git/c++/a3/processStudent.hpp
 algorithm
 -
 cctype
@@ -76,7 +76,7 @@ string
 typeinfo
 -
 
-C:/Git/cs368/a3/processStudent.hpp
+D:/Git/c++/a3/processStudent.hpp
 fstream
 -
 functional
@@ -84,7 +84,7 @@ functional
 vector
 -
 GradStudent.hpp
-C:/Git/cs368/a3/GradStudent.hpp
+D:/Git/c++/a3/GradStudent.hpp
 UndergradStudent.hpp
-C:/Git/cs368/a3/UndergradStudent.hpp
+D:/Git/c++/a3/UndergradStudent.hpp
 

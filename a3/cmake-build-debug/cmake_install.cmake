@@ -1,4 +1,4 @@
-# Install script for directory: C:/Git/cs368/a3
+# Install script for directory: D:/Git/c++/a3
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -35,5 +35,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Git/cs368/a3/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/Git/c++/a3/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -21,6 +21,7 @@ GradStudent::GradStudent(std::string name,
 
 void GradStudent::printDetails() {
     Student::printDetails();
+    std::cout << "Total = " << this->getTotal() << std::endl;
     std::cout << "Grade = " << this->getGrade() << std::endl;
     std::cout << "Type = Graduate Student" << std::endl;
     std::cout << "Research Area = " << researchArea << std::endl;

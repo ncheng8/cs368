@@ -84,10 +84,10 @@ void computeStatistics(std::vector<std::reference_wrapper<Student>> &students) {
     // compute the # of students based on the type of students.
     double numStudents;
     if (typeid(students[0].get()) == typeid(UndergradStudent)) {
-        std::cout << "Number of undergrads: " << UndergradStudent::getNumStudents() << std::endl;
+        std::cout << "Number of students = " << UndergradStudent::getNumStudents() << std::endl;
         numStudents = UndergradStudent::getNumStudents();
     } else {
-        std::cout << "Number of grads: " << GradStudent::getNumStudents() << std::endl;
+        std::cout << "Number of students = " << GradStudent::getNumStudents() << std::endl;
         numStudents = GradStudent::getNumStudents();
     }
     double mean = 0;
@@ -95,14 +95,17 @@ void computeStatistics(std::vector<std::reference_wrapper<Student>> &students) {
         mean += it->get().getTotal();
     }
     mean = mean / numStudents;
-    std::cout << "Avg total score: " << mean << std::endl;
+    std::cout << "The mean of the total score = " << mean << std::endl;
     std::sort(students.begin(), students.end(),
               [](const std::reference_wrapper<Student> &lhs, const std::reference_wrapper<Student> &rhs) {
                   return lhs.get().getTotal() > rhs.get().getTotal();
               });
+    std::cout << "The sorted list of students (id, name, total, grade) in descending order of total:" << std::endl;
     for (auto it = students.begin(); it != students.end(); ++it) {
-        std::cout << "Score: " << it->get().getTotal() << std::endl;
+        std::cout << it->get().getId() << ", " << it->get().getName() << ", " << it->get().getTotal() << ", "
+                  << it->get().getGrade() << std::endl;
     }
+    std::cout << std::endl;
     //std::cout << UndergradStudent::getNumStudents() << std::endl;
     // compute the mean of the total score.
 

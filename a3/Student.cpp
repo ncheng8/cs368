@@ -72,6 +72,7 @@ int Student::getNumStudents() {
    }
 */
 void Student::printDetails() {
+    std::cout << "STUDENT DETAILS:" << std::endl;
     std::cout << "Id = " << getId() << std::endl;
     std::cout << "Name = " << getName() << std::endl;
     std::cout << "Age = " << getAge() << std::endl;
@@ -80,7 +81,7 @@ void Student::printDetails() {
         if (it == assignmentsScore.begin()) {
             std::cout << *it;
         } else {
-            std::cout << "," << *it;
+            std::cout << ", " << *it;
         }
     }
     std::cout << "]\n";

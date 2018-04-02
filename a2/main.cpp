@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
         std::cerr << "Input file stopwords.txt cannot be opened." << std::endl;
         return -1;
     }
-
+///////////////////////////////////////////////////////////////////////////
     // Read a collections of stopwords from the stopwords file
     // and store it in a set.
     fillStopWords(stopwordsFile, stopwords);
