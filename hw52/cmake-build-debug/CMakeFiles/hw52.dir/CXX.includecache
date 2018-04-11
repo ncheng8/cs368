@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Git/c++/hw52/main.cpp
+windows.h
+-
+iostream
+-
+sstream
+-
+map
+-
+utility
+-
+fstream
+-
+string
+-
+cstdlib
+-
+
