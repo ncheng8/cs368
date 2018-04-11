@@ -54,7 +54,7 @@ int main() {
     p[1][2] = 5;
     std::cout << "Matrix p:" << std::endl;
     std::cout << p << std::endl;
-
+/*
 
     // perform comparisons of matrices.
     Matrix<int> mCopy(2, 2);
@@ -293,7 +293,7 @@ int main() {
         std::cout << e.what() << std::endl;
     } 
 
-/*
+
     */
 
 

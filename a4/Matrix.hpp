@@ -52,6 +52,8 @@ public:
     Matrix();
     Matrix(int r, int c);
     void print() const;
+    int getRows() const;
+    int getCols() const;
 
     // we need operator[] to return a modifiable L-value, that is, a non-const reference
     // so that we can store a value in a cell of a Matrix
@@ -143,6 +145,16 @@ void Matrix<T>::print() const {
         std::cout << std::endl;
     }
     std::cout << std::endl;
+}
+
+template<typename T>
+int Matrix<T>::getRows() const {
+    return rows;
+}
+
+template<typename T>
+int Matrix<T>::getCols() const {
+    return rows;
 }
 
 /**
