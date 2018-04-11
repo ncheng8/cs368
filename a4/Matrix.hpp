@@ -37,6 +37,13 @@ public:
     }
 };
 
+class RowIndexOutOfBoundsException : public std::runtime_error {
+public:
+    RowIndexOutOfBoundsException() : std::runtime_error("not a valid row index")
+    {// no other code in the constructor
+    }
+};
+
 ///////////////////////////////////////////////////////
 // DECLARATION OF THE MATRIX TEMPLATED CLASS
 // YOU WILL NEED TO ADD MORE PROTOTYPES HERE
@@ -67,6 +74,9 @@ public:
     // operator+ has a const reference parameter, promises not to modify this object
     // and returns a const value
     const Matrix<T> operator+(const Matrix<T> &rhs) const;
+
+    const bool operator==(/*const Matrix<T> &lhs,*/ const Matrix<T> &rhs) const;
+    const bool operator!=(/*const Matrix<T> &lhs, */const Matrix<T> &rhs) const;
 
 
 /**
@@ -205,6 +215,30 @@ const Matrix<T> Matrix<T>::operator+(const Matrix<T> &rhs) const {
         }
     }
     return result;
+}
+
+template<typename T>
+const bool Matrix<T>::operator==(const Matrix<T> &rhs) const{
+    Matrix<T> lhs = *this;
+    if (lhs.rows != rhs.rows || lhs.cols != rhs.cols) {
+        return false;
+    }
+    int rows = rhs.getRows();
+    int cols = rhs.getCols();
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            if (lhs[i][j] != rhs[i][j]) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+template<typename T>
+const bool Matrix<T>::operator!=(const Matrix<T> &rhs) const{
+    Matrix<T> lhs = *this;
+    return !(lhs == rhs);
 }
 
 #endif //LECTURE9_MATRIX_HPP
