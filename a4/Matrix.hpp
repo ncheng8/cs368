@@ -59,46 +59,31 @@ private:
 
 public:
     Matrix();
-
     Matrix(int r, int c);
-
     void print() const;
-
     int getRows() const;
-
     int getCols() const;
 
     // two different [] operators, one for each side of an operator
     std::vector<T> &operator[](const int index);
-
     const std::vector<T> &operator[](const int index) const;
 
     // basic addition, subtraction, and multiplication operators
     const Matrix<T> operator+(const Matrix<T> &rhs) const;
-
     const Matrix<T> operator-(const Matrix<T> &rhs) const;
-
     const Matrix<T> operator*(const Matrix<T> &rhs) const;
 
     // compound assignment operators
     Matrix<T> &operator+=(const Matrix<T> &rhs);
-
     Matrix<T> &operator-=(const Matrix<T> &rhs);
-
     Matrix<T> &operator*=(const Matrix<T> &rhs);
-
-    Matrix<T> &operator*=(const int scalar);
-
-    //an additional overload for complex numbers
-    Matrix<T> &operator*=(const std::complex<int> scalar);
+    Matrix<T> &operator*=(T const scalar);
 
     // equality operators
     const bool operator==(const Matrix<T> &rhs) const;
-
     const bool operator!=(const Matrix<T> &rhs) const;
 
     // friends
-    // matrix multiplication operator, for scalar integers
     /**
      * @brief overrides the * operator for Matrix<T>
      *        specifically for scalar integers
@@ -106,7 +91,7 @@ public:
      * @param rhs  the Matrix<T> to be multiplied by
      * @return the matrix resulting from the multiplication
      */
-    friend const Matrix<T> operator*(int scalar, const Matrix<T> &rhs) {
+    friend const Matrix<T> operator*(T scalar, const Matrix<T> &rhs) {
         Matrix<T> result(rhs.rows, rhs.cols);
         // multiply every value of the matrix in place by the integer scalar
         for (int i = 0; i < rhs.rows; ++i) {
@@ -116,54 +101,26 @@ public:
         }
         return result;
     }
+
     /**
      * @brief calls the other * override for Matrix<T> in correct order
      * @param scalar the integer we are multiplying the matrix by
      * @param rhs  the Matrix<T> to be multiplied by
      * @return the matrix resulting from the multiplication
      */
-    friend const Matrix<T> operator*(const Matrix<T> &rhs, int scalar) {
+    friend const Matrix<T> operator*(const Matrix<T> &rhs, T scalar) {
         // call the other * operator in the correct order
         return scalar * rhs;
     }
 
-    //matrix multiplication operator, for complex numbers
     /**
-     * @brief overrides the * operator for Matrix<T>
-     *        specifically for complex numbers
-     * @param scalar the complex number we are multiplying the matrix by
-     * @param rhs  the Matrix<T> to be multiplied by
-     * @return the matrix resulting from the multiplication
+     * @brief overrides the << operator for Matrix<T>
+     *        because this is a friend function, and because we have a templated class
+     *        we need to define the function inside our class declaration
+     * @param os the stream that we are using << with
+     * @param obj  the Matrix<T> we are trying to insert into the stream
+     * @return a non-const reference, which allows us to chain << operators
      */
-    friend const Matrix<T> operator*(std::complex<int> scalar, const Matrix<T> &rhs) {
-        Matrix<T> result(rhs.rows, rhs.cols);
-        // multiply every matrix value in place by the complex number
-        for (int i = 0; i < rhs.rows; ++i) {
-            for (int j = 0; j < rhs.cols; ++j) {
-                result[i][j] = scalar * rhs[i][j];
-            }
-        }
-        return result;
-    }
-    /**
-     * @brief calls the other * override for Matrix<T> in correct order
-     * @param scalar the complex number we are multiplying the matrix by
-     * @param rhs  the Matrix<T> to be multiplied by
-     * @return the matrix resulting from the multiplication
-     */
-    friend const Matrix<T> operator*(const Matrix<T> &rhs, std::complex<int> scalar) {
-        // call the other * operator for complex numbers in the correct order
-        return scalar * rhs;
-    }
-
-    /**
- * @brief overrides the << operator for Matrix<T>
- *        because this is a friend function, and because we have a templated class
- *        we need to define the function inside our class declaration
- * @param os the stream that we are using << with
- * @param obj  the Matrix<T> we are trying to insert into the stream
- * @return a non-const reference, which allows us to chain << operators
- */
     friend std::ostream &operator<<(std::ostream &os, const Matrix<T> &obj) {
         for (auto rowIt = obj.data.begin(); rowIt != obj.data.end(); ++rowIt) {
             for (auto colIt = rowIt->begin(); colIt != rowIt->end(); ++colIt) {
@@ -191,9 +148,8 @@ public:
 
 template<typename T>
 Matrix<T>::Matrix() : Matrix(1, 1) {
+    
 }
-
-
 /**
  * @brief Constructor for Matrix<T>
  *        Matrices store their data in a single vector called data
@@ -411,20 +367,7 @@ Matrix<T> &Matrix<T>::operator*=(const Matrix<T> &rhs) {
  * @return a reference to the new multiplied matrix
  */
 template<typename T>
-Matrix<T> &Matrix<T>::operator*=(const int scalar) {
-    // call friend function for *
-    *this = scalar * *this;
-    return *this;
-}
-
-/**
- * @brief a reversible overload of compound assignment for complex numbers and matrices
- *        calls the relevant friend function overload *
- * @param scalar  a const complex number that will be multiplied by the matrix
- * @return a reference to the new multiplied matrix
- */
-template<typename T>
-Matrix<T> &Matrix<T>::operator*=(const std::complex<int> scalar) {
+Matrix<T> &Matrix<T>::operator*=(T const scalar) {
     // call friend function for *
     *this = scalar * *this;
     return *this;
