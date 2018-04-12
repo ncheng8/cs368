@@ -39,7 +39,7 @@ public:
 
 class RowIndexOutOfBoundsException : public std::runtime_error {
 public:
-    RowIndexOutOfBoundsException() : std::runtime_error("not a valid row index")
+    RowIndexOutOfBoundsException() : std::runtime_error("row index out of bounds")
     {// no other code in the constructor
     }
 };
@@ -74,12 +74,50 @@ public:
     // operator+ has a const reference parameter, promises not to modify this object
     // and returns a const value
     const Matrix<T> operator+(const Matrix<T> &rhs) const;
+    const Matrix<T> operator-(const Matrix<T> &rhs) const;
+    const Matrix<T> operator*(const Matrix<T> &rhs) const;
 
-    const bool operator==(/*const Matrix<T> &lhs,*/ const Matrix<T> &rhs) const;
-    const bool operator!=(/*const Matrix<T> &lhs, */const Matrix<T> &rhs) const;
+    Matrix<T> & operator+=(const Matrix<T> &rhs);
+    Matrix<T> & operator-=(const Matrix<T> &rhs);
+    Matrix<T> & operator*=(const Matrix<T> &rhs);
+    Matrix<T> & operator*=(const int scalar);
+    Matrix<T> & operator*=(const std::complex<int> scalar);
 
+    // equality operators
+    const bool operator==(const Matrix<T> &rhs) const;
+    const bool operator!=(const Matrix<T> &rhs) const;
 
-/**
+    // friends
+        // matrix multiplication operator, for scalar integers
+    friend const Matrix<T> operator*(int scalar, const Matrix<T> &rhs) {
+        Matrix<T> result(rhs.rows, rhs.cols);
+        for (int i = 0; i < rhs.rows; ++i) {
+            for (int j = 0; j < rhs.cols; ++j) {
+                result[i][j] = scalar * rhs[i][j];
+            }
+        }
+        return result;
+    }
+
+    friend const Matrix<T> operator*(const Matrix<T> &rhs, int scalar) {
+        return scalar * rhs;
+    }
+        //matrix multiplication operator, for complex numbers
+    friend const Matrix<T> operator*(std::complex<int> scalar, const Matrix<T> &rhs) {
+        Matrix<T> result(rhs.rows, rhs.cols);
+        for (int i = 0; i < rhs.rows; ++i) {
+            for (int j = 0; j < rhs.cols; ++j) {
+                result[i][j] = scalar * rhs[i][j];
+            }
+        }
+        return result;
+    }
+
+    friend const Matrix<T> operator*(const Matrix<T> &rhs, std::complex<int> scalar) {
+        return scalar * rhs;
+    }
+
+    /**
  * @brief overrides the << operator for Matrix<T>
  *        because this is a friend function, and because we have a templated class
  *        we need to define the function inside our class declaration
@@ -164,7 +202,7 @@ int Matrix<T>::getRows() const {
 
 template<typename T>
 int Matrix<T>::getCols() const {
-    return rows;
+    return cols;
 }
 
 /**
@@ -177,6 +215,9 @@ int Matrix<T>::getCols() const {
 template<typename T>
 std::vector<T> & Matrix<T>::operator[](const int index) {
     //std::cout << " calling non-const operator[] with index = " << index << std::endl;
+    if (index < 0 || index > this->rows) {
+        throw RowIndexOutOfBoundsException();
+    }
     return data[index];
 }
 
@@ -190,6 +231,9 @@ std::vector<T> & Matrix<T>::operator[](const int index) {
 template<typename T>
 const std::vector<T> & Matrix<T>::operator[](const int index) const {
     //std::cout << "     calling const operator[] with index = " << index << std::endl;
+    if (index < 0 || index > this->rows) {
+        throw RowIndexOutOfBoundsException();
+    }
     return data[index];
 }
 
@@ -218,13 +262,81 @@ const Matrix<T> Matrix<T>::operator+(const Matrix<T> &rhs) const {
 }
 
 template<typename T>
+const Matrix<T> Matrix<T>::operator-(const Matrix<T> &rhs) const {
+    Matrix<T> lhs = *this;
+    if (lhs.rows != rhs.rows || lhs.cols != rhs.cols) {
+        throw DimensionMismatchException();
+    }
+    int rows = rhs.rows;
+    int cols = rhs.cols;
+    Matrix<T> result(rows, cols);
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            //std::cout << "adding elements at [" << i << "][" << j << "]" << std::endl;
+            result[i][j] = lhs[i][j] - rhs[i][j];
+        }
+    }
+    return result;
+}
+
+template<typename T>
+const Matrix<T> Matrix<T>::operator*(const Matrix<T> &rhs) const {
+    Matrix<T> lhs = *this;
+    if (lhs.cols != rhs.rows) {
+        throw DimensionMismatchException();
+    }
+    Matrix<T> result(lhs.rows, rhs.cols);
+    for (int i = 0; i < lhs.rows; i++)
+    {
+        for (int j = 0; j < rhs.cols; j++)
+        {
+            result[i][j] = 0;
+            for (int k = 0; k < rhs.rows; k++)
+            {
+                result[i][j] += lhs[i][k] * rhs[k][j];
+            }
+        }
+    }
+    return result;
+}
+template<typename T>
+Matrix<T> & Matrix<T>::operator+=(const Matrix<T> &rhs) {
+    *this = *this + rhs;
+    return *this;
+}
+
+template<typename T>
+Matrix<T> & Matrix<T>::operator-=(const Matrix<T> &rhs) {
+    *this = *this - rhs;
+    return *this;
+}
+
+template<typename T>
+Matrix<T> & Matrix<T>::operator*=(const Matrix<T> &rhs) {
+    *this = *this * rhs;
+    return *this;
+}
+
+template<typename T>
+Matrix<T> & Matrix<T>::operator*=(const int scalar) {
+    *this = scalar * *this;
+    return *this;
+}
+
+template<typename T>
+Matrix<T> & Matrix<T>::operator*=(const std::complex<int> scalar) {
+    *this = scalar * *this;
+    return *this;
+}
+
+template<typename T>
 const bool Matrix<T>::operator==(const Matrix<T> &rhs) const{
     Matrix<T> lhs = *this;
     if (lhs.rows != rhs.rows || lhs.cols != rhs.cols) {
         return false;
     }
-    int rows = rhs.getRows();
-    int cols = rhs.getCols();
+    int rows = rhs.rows;
+    int cols = rhs.cols;
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
             if (lhs[i][j] != rhs[i][j]) {
