@@ -83,6 +83,7 @@ public:
     ~Vector() {
         std::cout << "Destructor called" << std::endl; // leave this here !
         // TODO:  add one more line of code to prevent a memory leak
+        delete [] elements;
     }
 
     /**
@@ -91,6 +92,7 @@ public:
      */
     size_t Size() const {
         // TODO: write this code
+        return size;
     }
 
     /**
@@ -98,7 +100,8 @@ public:
      * @return true if the container is empty, false otherwise.
      */
     bool Empty() const {
-        // TODO: write this code    
+        // TODO: write this code
+        return size == 0;
     }
 
     /**
@@ -107,6 +110,7 @@ public:
      */      
     size_t Capacity() const{
         // TODO: write this code
+        return capacity;
     }
    /**
      * @brief Overloaded array subscripting operator without bounds checking
@@ -134,7 +138,7 @@ public:
     void Pop_Back() {
         // hint:  just modify size
         // TODO: write this code
-        }
+
     }
 
     /**
@@ -180,10 +184,19 @@ public:
     void Push_Back(T thing){
         if (size < capacity){
             elements[size] = thing;
+            //elements[size++] = thing;
             size++;
         }
         // TODO: complete this code
-        else{ 
+        else{
+            T* newElements = new T[capacity * 2];
+            for (int i = 0; i < size; ++i) {
+                newElements[i] = elements[i];
+            }
+            delete [] elements;
+            elements = newElements;
+            elements[size++] = thing;
+            capacity *= 2;
         }
     }
 
