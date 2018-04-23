@@ -57,6 +57,13 @@ public:
     Vector(const Vector &other) {
         // similar to operator= but with fewer lines of code
         // and no 'if' statement needed
+        capacity = other.capacity;
+        size = other.size;
+        elements = new T[capacity];
+        for (int i = 0; i < capacity; ++i) {
+            elements[i] = other.elements[i];
+        }
+
     }
 
     /**
@@ -70,8 +77,9 @@ public:
             size = other.size;
             delete[] elements;
             elements = new T[capacity];
-            // TODO use a for loop to copy the data from other.elements into elements
-
+            for (int i = 0; i < capacity; ++i) {
+                elements[i] = other.elements[i];
+            }
             return *this;
         }
     }
@@ -82,7 +90,6 @@ public:
      */
     ~Vector() {
         std::cout << "Destructor called" << std::endl; // leave this here !
-        // TODO:  add one more line of code to prevent a memory leak
         delete [] elements;
     }
 
@@ -91,7 +98,6 @@ public:
      * @return The number of elements in the container.
      */
     size_t Size() const {
-        // TODO: write this code
         return size;
     }
 
@@ -100,7 +106,6 @@ public:
      * @return true if the container is empty, false otherwise.
      */
     bool Empty() const {
-        // TODO: write this code
         return size == 0;
     }
 
@@ -109,7 +114,6 @@ public:
      * @return The number of elements that can be held in currently allocated storage.
      */      
     size_t Capacity() const{
-        // TODO: write this code
         return capacity;
     }
    /**
@@ -137,8 +141,9 @@ public:
      */
     void Pop_Back() {
         // hint:  just modify size
-        // TODO: write this code
-
+        if (size > 0) {
+            --size;
+        }
     }
 
     /**
@@ -154,7 +159,7 @@ public:
      * @return An iterator to one past the last element.
      */
     iterator End() {
-        // TODO: write this.... just need one line of code
+        return elements + size;
     }
 
     /**
@@ -171,7 +176,7 @@ public:
      */
     const_iterator End() const {
         // same as the other End() function
-        // TODO: write this code
+        return elements + size;
     }
 
    /**
@@ -183,11 +188,8 @@ public:
      */
     void Push_Back(T thing){
         if (size < capacity){
-            elements[size] = thing;
-            //elements[size++] = thing;
-            size++;
+            elements[size++] = thing;
         }
-        // TODO: complete this code
         else{
             T* newElements = new T[capacity * 2];
             for (int i = 0; i < size; ++i) {
@@ -201,9 +203,9 @@ public:
     }
 
 
-     /* @brief Removes all elements from the container.
-     *        Leaves the capacity of the vector unchanged
-     */
+     /** @brief Removes all elements from the container.
+      *        Leaves the capacity of the vector unchanged
+      */
     void Clear() {
         size = 0; 
     }
@@ -219,7 +221,13 @@ public:
     void Erase(iterator posToDelete) {
         // hint:  use pointers to slide the array items to the left
         //        you do not need to use delete or new
-        // TODO: write this code  
+        // TODO: write this code
+        if (posToDelete+1!= End()) {
+            for (auto it = posToDelete; it+1 != End(); ++it) {
+                *it = *(it+1);
+            }
+        }
+        Pop_Back();
     }
 
     /**
@@ -230,6 +238,9 @@ public:
      */
     T &At(std::size_t pos) {
         // TODO: you need to add a check to throw something here
+        if (pos >= size || pos < 0) {
+            throw IndexOutOfBoundsException();
+        }
         return elements[pos];
     }
 
@@ -240,7 +251,11 @@ public:
      * @throw IndexOutOfBoundsException if out of range
      */
     const T &At(std::size_t pos) const {
-        // TODO: same as the non-const version    
+        // TODO: same as the non-const version
+        if (pos >= size || pos < 0) {
+            throw IndexOutOfBoundsException();
+        }
+        return elements[pos];
     }
 
     /**
